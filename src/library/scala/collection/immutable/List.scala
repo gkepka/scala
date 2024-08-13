@@ -27,6 +27,8 @@ import scala.runtime.Statics.releaseFence
   *  and `scala.::` that implement the abstract members `isEmpty`,
   *  `head` and `tail`.
   *
+  *  `List` is the default implementation for `Iterable`, `Seq` and `LinearSeq` traits.
+  *
   *  This class is optimal for last-in-first-out (LIFO), stack-like access patterns. If you need another access
   *  pattern, for example, random access or FIFO, consider using a collection more suited to this than `List`.
   *
@@ -187,6 +189,8 @@ sealed abstract class List[+A]
   }
 
   /** @inheritdoc
+    *
+    * This operation is `O(n)` in regard to the `until` argument.
     *
     *  @example {{{
     *  // Given a list

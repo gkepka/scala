@@ -84,7 +84,7 @@ trait SeqOps[+A, +CC[_], +C] extends Any
   @throws[IndexOutOfBoundsException]
   def apply(i: Int): A
 
-  /** The length (number of elements) of the $coll. `size` is an alias for `length` in `Seq` collections. */
+  /** The length (number of elements) of the $coll. [[size]] is an alias for length in `Seq` collections. */
   def length: Int
 
   /** A copy of the $coll with an element prepended.
@@ -111,9 +111,9 @@ trait SeqOps[+A, +CC[_], +C] extends Any
     */
   def prepended[B >: A](elem: B): CC[B] = iterableFactory.from(new View.Prepended(elem, this))
 
-  /** Alias for `prepended`.
+  /** Alias for [[prepended]].
     *
-    * Note that :-ending operators are right associative (see example).
+    * Note that :-ending operators are right associative (see example in `prepended`).
     * A mnemonic for `+:` vs. `:+` is: the COLon goes on the COLlection side.
     */
   @`inline` final def +: [B >: A](elem: B): CC[B] = prepended(elem)
@@ -141,9 +141,9 @@ trait SeqOps[+A, +CC[_], +C] extends Any
     */
   def appended[B >: A](elem: B): CC[B] = iterableFactory.from(new View.Appended(this, elem))
 
-  /** Alias for `appended`.
+  /** Alias for [[appended]].
     *
-    * Note that :-ending operators are right associative (see example).
+    * Note that :-ending operators are right associative (see example in `appended`).
     * A mnemonic for `+:` vs. `:+` is: the COLon goes on the COLlection side.
     */
   @`inline` final def :+ [B >: A](elem: B): CC[B] = appended(elem)
@@ -165,7 +165,7 @@ trait SeqOps[+A, +CC[_], +C] extends Any
     case _ => prefix.iterator ++ iterator
   })
 
-  /** Alias for `prependedAll`. */
+  /** Alias for [[prependedAll]]. */
   @`inline` override final def ++: [B >: A](prefix: IterableOnce[B]): CC[B] = prependedAll(prefix)
 
   /** Returns a new $coll containing the elements from the left hand operand followed by the elements from the
@@ -179,7 +179,7 @@ trait SeqOps[+A, +CC[_], +C] extends Any
     */
   def appendedAll[B >: A](suffix: IterableOnce[B]): CC[B] = super.concat(suffix)
 
-  /** Alias for `appendedAll`. */
+  /** Alias for [[appendedAll]]. */
   @`inline` final def :++ [B >: A](suffix: IterableOnce[B]): CC[B] = appendedAll(suffix)
 
   // Make `concat` an alias for `appendedAll` so that it benefits from performance
@@ -513,6 +513,10 @@ trait SeqOps[+A, +CC[_], +C] extends Any
    *  @param  that    the sequence to test
    *  @return  `true` if this $coll contains a slice with the same elements
    *           as `that`, otherwise `false`.
+   *  @example {{{
+   *    Seq(1, 2, 3, 4).containsSlice(Seq(2, 3)) = true
+   *    Seq(1, 2, 3, 4).containsSlice(Seq(2, 4)) = false
+   *  }}}
    */
   def containsSlice[B >: A](that: Seq[B]): Boolean = indexOfSlice(that) != -1
 

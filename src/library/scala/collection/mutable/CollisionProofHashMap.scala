@@ -446,7 +446,7 @@ final class CollisionProofHashMap[K, V](initialCapacity: Int, loadFactor: Double
     case _ => iterator.concat(suffix.iterator)
   })
 
-  /** Alias for `concat` */
+  /** Alias for [[concat]]. */
   @`inline` override final def ++ [V2 >: V](xs: IterableOnce[(K, V2)]): CollisionProofHashMap[K, V2] = concat(xs)
 
   @deprecated("Consider requiring an immutable Map or fall back to Map.concat", "2.13.0")

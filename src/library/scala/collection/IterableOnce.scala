@@ -517,6 +517,7 @@ trait IterableOnceOps[+A, +CC[_], +C] extends Any { this: IterableOnce[A] =>
    *  @return       a new $coll resulting from applying the given partial function
    *                `pf` to each element on which it is defined and collecting the results.
    *                The order of the elements is preserved.
+   * @example       `Seq(1, 2).collect({case i if i % 2 == 0 => i*10}) = Seq(20)`
    */
   def collect[B](pf: PartialFunction[A, B]): CC[B]
 

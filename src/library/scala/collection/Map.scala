@@ -350,7 +350,7 @@ trait MapOps[K, +V, +CC[_, _] <: IterableOps[_, AnyConstr, _], +C]
 
   // Not final because subclasses refine the result type, e.g. in SortedMap, the result type is
   // SortedMap's CC, while Map's CC is fixed to Map
-  /** Alias for `concat` */
+  /** Alias for [[concat]].*/
   /*@`inline` final*/ def ++ [V2 >: V](xs: collection.IterableOnce[(K, V2)]): CC[K, V2] = concat(xs)
 
   override def addString(sb: StringBuilder, start: String, sep: String, end: String): sb.type =

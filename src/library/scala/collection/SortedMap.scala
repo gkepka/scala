@@ -181,7 +181,7 @@ trait SortedMapOps[K, +V, +CC[X, Y] <: Map[X, Y] with SortedMapOps[X, Y, CC, _],
     case _ => iterator.concat(suffix.iterator)
   })(using ordering)
 
-  /** Alias for `concat` */
+  /** Alias for [[concat]]. */
   @`inline` override final def ++ [V2 >: V](xs: IterableOnce[(K, V2)]): CC[K, V2] = concat(xs)
 
   @deprecated("Consider requiring an immutable Map or fall back to Map.concat", "2.13.0")

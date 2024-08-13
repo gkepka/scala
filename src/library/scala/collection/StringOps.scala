@@ -346,13 +346,13 @@ final class StringOps(private val s: String) extends AnyVal {
     */
   @`inline` def concat(suffix: String): String = s + suffix
 
-  /** Alias for `concat` */
+  /** Alias for [[concat]]. */
   @`inline` def ++[B >: Char](suffix: Iterable[B]): immutable.IndexedSeq[B] = concat(suffix)
 
-  /** Alias for `concat` */
+  /** Alias for [[concat]]. */
   @`inline` def ++(suffix: IterableOnce[Char]): String = concat(suffix)
 
-  /** Alias for `concat` */
+  /** Alias for [[concat]]. */
   def ++(xs: String): String = concat(xs)
 
   /** Returns a collection with an element appended until a given target length is reached.
@@ -411,14 +411,14 @@ final class StringOps(private val s: String) extends AnyVal {
     b.result()
   }
 
-  /** Alias for `prepended` */
+  /** Alias for [[prepended]]. */
   @`inline` def +: [B >: Char] (elem: B): immutable.IndexedSeq[B] = prepended(elem)
 
   /** A copy of the string with an char prepended */
   def prepended(c: Char): String =
     new JStringBuilder(s.length + 1).append(c).append(s).toString
 
-  /** Alias for `prepended` */
+  /** Alias for [[prepended]]. */
   @`inline` def +: (c: Char): String = prepended(c)
 
   /** A copy of the string with all elements from a collection prepended */
@@ -431,13 +431,13 @@ final class StringOps(private val s: String) extends AnyVal {
     b.result()
   }
 
-  /** Alias for `prependedAll` */
+  /** Alias for [[prependedAll]]. */
   @`inline` def ++: [B >: Char] (prefix: IterableOnce[B]): immutable.IndexedSeq[B] = prependedAll(prefix)
 
   /** A copy of the string with another string prepended */
   def prependedAll(prefix: String): String = prefix + s
 
-  /** Alias for `prependedAll` */
+  /** Alias for [[prependedAll]]. */
   @`inline` def ++: (prefix: String): String = prependedAll(prefix)
 
   /** A copy of the string with an element appended */
@@ -449,28 +449,28 @@ final class StringOps(private val s: String) extends AnyVal {
     b.result()
   }
 
-  /** Alias for `appended` */
+  /** Alias for [[appended]]. */
   @`inline` def :+ [B >: Char](elem: B): immutable.IndexedSeq[B] = appended(elem)
 
   /** A copy of the string with an element appended */
   def appended(c: Char): String =
     new JStringBuilder(s.length + 1).append(s).append(c).toString
 
-  /** Alias for `appended` */
+  /** Alias for [[appended]]. */
   @`inline` def :+ (c: Char): String = appended(c)
 
   /** A copy of the string with all elements from a collection appended */
   @`inline` def appendedAll[B >: Char](suffix: IterableOnce[B]): immutable.IndexedSeq[B] =
     concat(suffix)
 
-  /** Alias for `appendedAll` */
+  /** Alias for [[appendedAll]]. */
   @`inline` def :++ [B >: Char](suffix: IterableOnce[B]): immutable.IndexedSeq[B] =
     concat(suffix)
 
   /** A copy of the string with another string appended */
   @`inline` def appendedAll(suffix: String): String = s + suffix
 
-  /** Alias for `appendedAll` */
+  /** Alias for [[appendedAll]]. */
   @`inline` def :++ (suffix: String): String = s + suffix
 
   /** Produces a new collection where a slice of characters in this string is replaced by another collection.
